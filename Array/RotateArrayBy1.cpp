@@ -18,7 +18,7 @@ void rotateArray (int arr[], int n)
 
 int main()
 {
-    int arr[] = {1, 3, 6, 8, 9};
+    int arr[] = {2, 3, 6, 8, 5};
     rotateArray(arr,5);
     return 0;
 }
