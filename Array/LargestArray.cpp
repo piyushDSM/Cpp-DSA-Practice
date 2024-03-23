@@ -1,27 +1,26 @@
-#include <iostream>
+#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
-int largest(int arr[], int n)
-{
+int Largest(int arr[],int n){
     int largest = arr[0];
-
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] > largest)
-        {
-            largest = arr[i];
+    for (int i=0; i<n; i++){
+        if(arr[i] > largest){
+           largest = arr[i];
         }
     }
-    
-        cout<<largest;
-
+    cout<<"The Largest Element in this Array is "<<largest;
     return 0;
 }
 
 int main()
 {
 
-    int arr[] = {1, 100, 6, 8, 0};
-    largest(arr,5);
-    return 0;
+int arr[] ={10,30,20,50,60};
+
+Largest(arr,5);
+
+
+
+return 0;
 }
