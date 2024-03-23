@@ -1,27 +1,24 @@
 #include <iostream>
-// using namespace std;
+using namespace std;
 
-// int largest(int arr[], int n)
-// {
-//     int largest = arr[0];
-
-//     for (int i = 0; i < n; i++)
-//     {
-//         if (arr[i] > largest)
-//         {
-//             largest = arr[i];
-//         }
-//     }
+void rotateArray (int arr[], int n)
+{
+  int temp = arr[0]; //Storing the first element in the array
+  
+    for (int i = 0; i<n; i++){
+        arr[i-1]=arr[i];
+    }
+    arr[n-1] = temp;
     
-//         cout<<largest;
+    for (int i=0; i<n; i++){
+        cout<< arr[i]<<" ";
+    }
+    
+}
 
-//     return 0;
-// }
-
-// int main()
-// {
-
-//     int arr[] = {1, 100, 6, 8, 0};
-//     largest(arr,5);
-//     return 0;
-// }
+int main()
+{
+    int arr[] = {2, 3, 6, 8, 5};
+    rotateArray(arr,5);
+    return 0;
+}
