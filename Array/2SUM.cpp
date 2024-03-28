@@ -14,7 +14,7 @@ int main()
 {
     int n = 5;
     vector<int> arr = {2, 6, 5, 8, 11};
-    int target = 14;
+    int target = 8;
     string ans = twoSum(n, arr, target);
     cout << "This is the answer is: " << ans << endl;
     return 0;
