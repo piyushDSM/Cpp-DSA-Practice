@@ -48,8 +48,6 @@ int main()
     int arr[6] = {2, 4, 6, 10, 14, 18};
     int size = 6;
     int key = 18;
-
     cout<< "Element is Present or not " << binarysearch(arr, 0, 5, key) << endl;
-
     return 0;
 }
