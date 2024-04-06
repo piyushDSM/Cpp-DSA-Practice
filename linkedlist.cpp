@@ -46,7 +46,6 @@ Node *node1 = new Node(10);
 // head pointed to node1
 Node* head =node1;
 print(head);
-
 insertAtHead(head,12);
 print(head);
 
