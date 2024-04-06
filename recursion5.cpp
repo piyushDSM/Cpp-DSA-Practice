@@ -6,7 +6,7 @@ void saydigit(int n, string arr[])
 
     // base case
     if (n == 0)
-        return ;
+        return;
 
     // processing
     int digit = n % 10;
