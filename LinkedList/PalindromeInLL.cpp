@@ -6,24 +6,27 @@ using namespace std;
 
 // Node class represents a
 // node in a linked list
-class Node {
+class Node
+{
 public:
     // Data stored in the node
-    int data;   
-    
+    int data;
+
     // Pointer to the next node in the list
-    Node* next;      
+    Node *next;
 
     // Constructor with both data and
     // next node as parameters
-    Node(int data1, Node* next1) {
+    Node(int data1, Node *next1)
+    {
         data = data1;
         next = next1;
     }
 
     // Constructor with only data as a
     // parameter, sets next to nullptr
-    Node(int data1) {
+    Node(int data1)
+    {
         data = data1;
         next = nullptr;
     }
@@ -31,23 +34,25 @@ public:
 
 // Function to reverse a linked list
 // using the recursive approach
-Node* reverseLinkedList(Node* head) {
+Node *reverseLinkedList(Node *head)
+{
     // Check if the list is empty
     // or has only one node
-    if (head == NULL || head->next == NULL) {
-        
+    if (head == NULL || head->next == NULL)
+    {
+
         // No change is needed;
         // return the current head
-        return head; 
+        return head;
     }
 
-    // Recursive step: Reverse the remaining 
+    // Recursive step: Reverse the remaining
     // part of the list and get the new head
-    Node* newHead = reverseLinkedList(head->next);
+    Node *newHead = reverseLinkedList(head->next);
 
     // Store the next node in 'front'
     // to reverse the link
-    Node* front = head->next;
+    Node *front = head->next;
 
     // Update the 'next' pointer of 'front' to
     // point to the current head, effectively
@@ -64,88 +69,94 @@ Node* reverseLinkedList(Node* head) {
     return newHead;
 }
 
-bool isPalindrome(Node* head) {
+bool isPalindrome(Node *head)
+{
     // Check if the linked list is empty
     // or has only one node
-    if (head == NULL || head->next == NULL) {
-        
-         // It's a palindrome by definition
-        return true; 
+    if (head == NULL || head->next == NULL)
+    {
+
+        // It's a palindrome by definition
+        return true;
     }
-    
+
     // Initialize two pointers, slow and fast,
     // to find the middle of the linked list
-    Node* slow = head;
-    Node* fast = head;
-    
+    Node *slow = head;
+    Node *fast = head;
+
     // Traverse the linked list to find the
     // middle using slow and fast pointers
-    while (fast->next != NULL && fast->next->next != NULL) {
-        
+    while (fast->next != NULL && fast->next->next != NULL)
+    {
+
         // Move slow pointer one step at a time
-        slow = slow->next;  
-        
+        slow = slow->next;
+
         // Move fast pointer two steps at a time
-        fast = fast->next->next;  
+        fast = fast->next->next;
     }
-    
+
     // Reverse the second half of the
     // linked list starting from the middle
-    Node* newHead = reverseLinkedList(slow->next);
-    
+    Node *newHead = reverseLinkedList(slow->next);
+
     // Pointer to the first half
-    Node* first = head;  
-    
-     // Pointer to the reversed second half
-    Node* second = newHead; 
-    while (second != NULL) {
-        
-        // Compare data values of 
+    Node *first = head;
+
+    // Pointer to the reversed second half
+    Node *second = newHead;
+    while (second != NULL)
+    {
+
+        // Compare data values of
         // nodes from both halves
-        
+
         // If values do not match,
         // the list is not a palindrome
-        if (first->data != second->data) {
-            
-            // Reverse the second half 
+        if (first->data != second->data)
+        {
+
+            // Reverse the second half
             // back to its original state
-            reverseLinkedList(newHead);  
-            
+            reverseLinkedList(newHead);
+
             // Not a palindrome
             return false;
         }
-        
-         // Move the first pointer
-        first = first->next; 
-        
+
+        // Move the first pointer
+        first = first->next;
+
         // Move the second pointer
-        second = second->next;  
+        second = second->next;
     }
-    
+
     // Reverse the second half
     // back to its original state
-    reverseLinkedList(newHead);  
-    
+    reverseLinkedList(newHead);
+
     // The linked list is a palindrome
-    return true;  
+    return true;
 }
 
-
-
 // Function to print the linked list
-void printLinkedList(Node* head) {
-    Node* temp = head;
-    while (temp != nullptr) {
+void printLinkedList(Node *head)
+{
+    Node *temp = head;
+    while (temp != nullptr)
+    {
         cout << temp->data << " ";
         temp = temp->next;
     }
     cout << endl;
 }
 
-int main() {
+int main()
+{
     // Create a linked list with
     // values 1, 5, 2, 5, and 1 (15251, a palindrome)
-    Node* head = new Node(1);
+    Node *head = new Node(1);
     head->next = new Node(5);
     head->next->next = new Node(2);
     head->next->next->next = new Node(5);
@@ -156,12 +167,14 @@ int main() {
     printLinkedList(head);
 
     // Check if the linked list is a palindrome
-    if (isPalindrome(head)) {
+    if (isPalindrome(head))
+    {
         cout << "The linked list is a palindrome." << endl;
-    } else {
+    }
+    else
+    {
         cout << "The linked list is not a palindrome." << endl;
     }
 
     return 0;
 }
-
