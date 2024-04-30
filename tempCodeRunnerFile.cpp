@@ -1,45 +1,50 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-void findCombination(int ind, int target, vector<int> &arr, vector<vector<int>> &ans, vector<int> &ds)
+
+class Solution
 {
-    if (target == 0)
+public:
+    // function to generate all possible permutations of a string
+    void permutationHelper(string &s, int index, vector<string> &res)
     {
-        ans.push_back(ds);
-        return;
+        if (index == s.size())
+        {
+            res.push_back(s);
+            return;
+        }
+        for (int i = index; i < s.size(); i++)
+        {
+            swap(s[i], s[index]);
+            permutationHelper(s, index + 1, res);
+            swap(s[i], s[index]);
+        }
     }
-    for (int i = ind; i < arr.size(); i++)
+
+    string getPermutation(int n, int k)
     {
-        if (i > ind && arr[i] == arr[i - 1])
-            continue;
-        if (arr[i] > target)
-            break;
-        ds.push_back(arr[i]);
-        findCombination(i + 1, target - arr[i], arr, ans, ds);
-        ds.pop_back();
+        string s;
+        vector<string> res;
+        // create string
+        for (int i = 1; i <= n; i++)
+        {
+            s.push_back(i + '0');
+        }
+        permutationHelper(s, 0, res);
+        // sort the generated permutations
+        sort(res.begin(), res.end());
+        // make k 0-based indexed to point to kth sequence
+        auto it = res.begin() + (k - 1);
+        return *it;
     }
-}
-vector<vector<int>> combinationSum2(vector<int> &candidates, int target)
-{
-    sort(candidates.begin(), candidates.end());
-    vector<vector<int>> ans;
-    vector<int> ds;
-    findCombination(0, target, candidates, ans, ds);
-    return ans;
-}
+};
+
 int main()
 {
-    vector<int> v{10, 1, 2, 7, 6, 1, 5};
-    vector<vector<int>> comb = combinationSum2(v, 8);
-    cout << "[ ";
-    for (int i = 0; i < comb.size(); i++)
-    {
-        cout << "[ ";
-        for (int j = 0; j < comb[i].size(); j++)
-        {
-            cout << comb[i][j] << " ";
-        }
-        cout << "]";
-    }
-    cout << " ]";
+    int n = 3, k = 3;
+    Solution obj;
+    string ans = obj.getPermutation(n, k);
+    cout << "The Kth permutation sequence is " << ans << endl;
+
+    return 0;
 }
