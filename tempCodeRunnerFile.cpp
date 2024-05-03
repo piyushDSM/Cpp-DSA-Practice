@@ -1,50 +1,62 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
 class Solution
 {
 public:
-    // function to generate all possible permutations of a string
-    void permutationHelper(string &s, int index, vector<string> &res)
+    void solve(int col, vector<string> &board, vector<vector<string>> &ans, vector<int> &leftrow, vector<int> &upperDiagonal, vector<int> &lowerDiagonal, int n)
     {
-        if (index == s.size())
+        if (col == n)
         {
-            res.push_back(s);
+            ans.push_back(board);
             return;
         }
-        for (int i = index; i < s.size(); i++)
+        for (int row = 0; row < n; row++)
         {
-            swap(s[i], s[index]);
-            permutationHelper(s, index + 1, res);
-            swap(s[i], s[index]);
+            if (leftrow[row] == 0 && lowerDiagonal[row + col] == 0 && upperDiagonal[n - 1 + col - row] == 0)
+            {
+                board[row][col] = 'Q';
+                leftrow[row] = 1;
+                lowerDiagonal[row + col] = 1;
+                upperDiagonal[n - 1 + col - row] = 1;
+                solve(col + 1, board, ans, leftrow, upperDiagonal, lowerDiagonal, n);
+                board[row][col] = '.';
+                leftrow[row] = 0;
+                lowerDiagonal[row + col] = 0;
+                upperDiagonal[n - 1 + col - row] = 0;
+            }
         }
     }
 
-    string getPermutation(int n, int k)
+public:
+    vector<vector<string>> solveNQueens(int n)
     {
-        string s;
-        vector<string> res;
-        // create string
-        for (int i = 1; i <= n; i++)
+        vector<vector<string>> ans;
+        vector<string> board(n);
+        string s(n, '.');
+        for (int i = 0; i < n; i++)
         {
-            s.push_back(i + '0');
+            board[i] = s;
         }
-        permutationHelper(s, 0, res);
-        // sort the generated permutations
-        sort(res.begin(), res.end());
-        // make k 0-based indexed to point to kth sequence
-        auto it = res.begin() + (k - 1);
-        return *it;
+        vector<int> leftrow(n, 0), upperDiagonal(2 * n - 1, 0), lowerDiagonal(2 * n - 1, 0);
+        solve(0, board, ans, leftrow, upperDiagonal, lowerDiagonal, n);
+        return ans;
     }
 };
-
 int main()
 {
-    int n = 3, k = 3;
+    int n = 4; // we are taking 4*4 grid and 4 queens
     Solution obj;
-    string ans = obj.getPermutation(n, k);
-    cout << "The Kth permutation sequence is " << ans << endl;
-
+    vector<vector<string>> ans = obj.solveNQueens(n);
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << "Arrangement " << i + 1 << "\n";
+        for (int j = 0; j < ans[0].size(); j++)
+        {
+            cout << ans[i][j];
+            cout << endl;
+        }
+        cout << endl;
+    }
     return 0;
 }
