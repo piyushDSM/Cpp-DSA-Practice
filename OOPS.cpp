@@ -8,7 +8,7 @@ private:
 public:
     int getter()
     {
-        return a = a;
+        return a;
     }
 
     int setter(int b)
@@ -23,7 +23,7 @@ int main()
 
     cout << "the value of a in Private " << P.getter() << endl;
     P.setter(10);
-    cout << "the value of a in Private " << P.getter();
+    cout << "the value of a in Public " << P.getter();
 
     return 0;
 }
