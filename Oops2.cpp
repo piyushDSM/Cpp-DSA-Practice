@@ -39,48 +39,49 @@
 // int main()
 // {
 //     Male obj1;
-    
+
 //     obj1.getAge(22);
 //     cout<< obj1.age <<endl;
 //     cout<< obj1.height<<endl;
 //     cout<< obj1.weight<<endl;
 //     obj1.sleeping();
 
-    
 //     return 0;
-// 
-
+//
 
 /* Ambiguity inheritance */
-#include<bits/stdc++.h>
-#include<iostream>
+#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-
-class A {
+class A
+{
 public:
-   void fnc(){
-    cout<< "Hello From A";
+   void fnc()
+   {
+      cout << "Hello From A";
    }
 };
-class B {
-    public:
-   void fnc(){
-    cout<< "Hello From B";
+class B
+{
+public:
+   void fnc()
+   {
+      cout << "Hello From B";
    }
 };
 
-class C : public A , public B {
-
+class C : public A, public B
+{
 };
 
 int main()
 {
 
-C obj;
-obj.A::fnc(); 
-cout<<endl;
-obj.B::fnc();  
+   C obj;
+   obj.A::fnc();
+   cout << endl;
+   obj.B::fnc();
 
-return 0;
+   return 0;
 }
