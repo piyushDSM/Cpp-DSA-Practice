@@ -80,7 +80,6 @@ void mergeSort(int *arr, int s, int e)
 int main()
 {
 
-    
     int arr[5] = {2, 5, 1, 6, 9};
     int n = 5;
 
@@ -93,4 +92,29 @@ int main()
     cout << endl;
 
     return 0;
+}
+
+if (moves.length() < 1)
+    return false;
+int upDown = 0, rightLeft = 0;
+char[] movesArr = moves.toCharArray();
+for (int i = 0; i < movesArr.length; i++)
+{
+    if (movesArr[i] == '^')
+        upDown++;
+    else if (movesArr[i] == 'v')
+        upDown--;
+    else if (movesArr[i] == '>')
+        rightLeft++;
+    else if (movesArr[i] == '<')
+        rightLeft--;
+}
+return upDown == 0 && rightLeft == 0 ? true : false;
+}
+public
+static void main(String[] args)
+{
+    Main test = new Main();
+    System.out.println(test.robotRectangle("^^>>><<vvv^"));
+    System.out.println(test.robotRectangle("^^<vvv^"));
 }
