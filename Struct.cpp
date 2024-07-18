@@ -19,7 +19,7 @@ struct student
 int main()
 {
 
-  // struct student ob;
+    // struct student ob;
     student ob;
     ob.roll = 1;
     ob.name = "Piyush";
