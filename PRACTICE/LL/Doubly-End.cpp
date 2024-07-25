@@ -39,26 +39,30 @@ void push(node **head_ref, int newData)
     (*head_ref) = newNode;
 }
 
-void insertAfter(node *prev_node, int newdata)
+void append(node **head_ref, int newData)
 {
+    node *newNode = new node();
+    newNode->data = newData;
+    newNode->next = NULL;
 
-    if (prev_node == NULL)
+    // Handling the first Case if Staarting Head is NULL
+    node *last = *head_ref;
+    if (*head_ref == NULL)
     {
-        cout << "Given prev node can't be NULL" << endl;
+        newNode->prev = NULL;
+        *head_ref = newNode;
         return;
     }
-
-    node *newNode = new node();
-    newNode->data = newdata;
-    newNode->next = prev_node->next;
-
-    prev_node->next = newNode;
-    newNode->prev = prev_node;
-
-    if (newNode->next != NULL)
+    // find the Last whose next is NULL
+    while (last->next != NULL)
     {
-        newNode->next->prev = newNode;
+        last = last->next;
     }
+
+    // If we find the NULL
+    last->next = newNode;
+    newNode->prev = last;
+    return;
 }
 
 int main()
@@ -70,7 +74,8 @@ int main()
     push(&head, 11);
     push(&head, 3);
 
-    insertAfter(head->next, 14);
+    append(&head, 10);
+
     printList(head);
 
     return 0;
