@@ -28,8 +28,8 @@ cout<<*p2<<endl;
 
 cout<<endl;
 
-cout<<&p<<endl;  // 
-cout<<&p2;
+cout<<&p<<endl;  // address of p
+cout<<p2;
 
 return 0;
 }
