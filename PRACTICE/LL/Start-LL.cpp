@@ -24,21 +24,20 @@ void printList(node *n)
 
 /* Dynamically Node in LL*/
 
-node *push(node *head, int newData){
- node *newNode = new node();
- newNode->data= newData;
- newNode->next= head;
- head = newNode;
+void push(node **head_ref, int newData)
+{
+    node *newNode = new node;
+    newNode->data = newData;
+    newNode->next = *head_ref;
+    *head_ref = newNode;
 
- return head;
 }
 
 int main()
 {
-
     node *head = NULL;
-    head = push(head,5);
-    head = push(head,7);
+    push(&head, 5);
+    push(&head, 7);
 
     printList(head);
 
