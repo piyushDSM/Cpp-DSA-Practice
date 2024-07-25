@@ -8,13 +8,21 @@ struct node
     node *next;
 };
 
-void printList(node *n)
+void printList(node *n) //iterative approach
 {
     while (n != NULL)
     {
         cout << n->data << endl;
         n = n->next;
     }
+}
+
+//recurisve approach
+
+void printLL(node *head){
+    if(head == NULL) return;
+    cout<<head->data<<endl;
+    printLL(head->next);
 }
 int main()
 {
@@ -33,6 +41,8 @@ int main()
     third->next = NULL;
 
     printList(head);
+    cout<<endl;
+    printLL(head);
 
     return 0;
 }
