@@ -21,17 +21,16 @@ void pintList(node *n)
     cout << "No. of element in Linked List is : " << count << endl;
 }
 
-
 void push(node **head_ref, int newData)
 {
     node *newNode = new node;
     newNode->data = newData;
     newNode->next = *head_ref;
     *head_ref = newNode;
-
 }
 
-void insertAfter(node *prev_node, int newData){
+void insertAfter(node *prev_node, int newData)
+{
     node *newNode = new node();
     newNode->data = newData;
     newNode->next = prev_node->next;
@@ -44,7 +43,6 @@ int main()
     push(&head, 5);
     push(&head, 7);
     push(&head, -3);
-    
 
     insertAfter(head->next, 80);
     pintList(head);

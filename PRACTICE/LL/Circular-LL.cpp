@@ -73,8 +73,8 @@ int main()
     nine->next = head;
 
     printCircularlist(five);
-    
-//  prinList(head);
+
+    //  prinList(head);
 
     return 0;
 }

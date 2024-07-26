@@ -30,7 +30,6 @@ void push(node **head_ref, int newData)
     newNode->data = newData;
     newNode->next = *head_ref;
     *head_ref = newNode;
-
 }
 
 int main()
