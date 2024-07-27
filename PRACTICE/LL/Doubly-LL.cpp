@@ -30,11 +30,11 @@ void push(node **head_ref, int newData)
     newNode->next = *head_ref;
     newNode->prev = NULL;
 
-    if ((*head_ref) != NULL)
+    if (*head_ref != NULL)
     {
-        (*head_ref) = newNode;
+        (*head_ref)->prev = newNode;
     }
-    (*head_ref) = newNode;
+    *head_ref = newNode;
 }
 
 int main()
