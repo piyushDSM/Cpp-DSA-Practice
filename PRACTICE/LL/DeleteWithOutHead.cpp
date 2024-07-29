@@ -32,11 +32,12 @@ void push(node **head_ref, int newData)
     *head_ref = newNode;
 }
 
- void deleteNode(node* key) {
-        node *cur = key->next;
-        key->data = cur->data;
-        key->next = cur->next;
-    }
+void deleteNode(node *key)
+{
+    node *cur = key->next;
+    key->data = cur->data;
+    key->next = cur->next;
+}
 
 int main()
 {
@@ -45,16 +46,12 @@ int main()
     push(&head, 1);
     push(&head, 5);
     push(&head, 4);
-    
 
     printList(head);
-    cout<<endl;
+    cout << endl;
 
     deleteNode(head->next);
     printList(head);
-    
-
-    
 
     return 0;
 }
