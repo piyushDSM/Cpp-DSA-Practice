@@ -16,7 +16,17 @@ void printList(node *n) // iterative approach
         n = n->next;
     }
 }
+ node* reverseLLinOne(node* head) {
+        node *prev = NULL , *curr = head;
 
+        while(curr != NULL){
+            node *temp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = temp;;
+        }
+        return prev;
+    }
 node *reverseList(node *head)
 {
     if (head == NULL)
@@ -52,7 +62,8 @@ int main()
 
     printList(head);
     cout << endl;
-    reverseList(head);
+    // reverseList(head);
+    reverseLLinOne(head);
     printList(head);
     return 0;
 }
