@@ -23,11 +23,11 @@ void printList(node *n) // iterative approach
             node *temp = curr->next;
             curr->next = prev;
             prev = curr;
-            curr = temp;;
+            curr = temp;
         }
         return prev;
     }
-node *reverseList(node *head)
+node *reverseList(node *head) 
 {
     if (head == NULL)
         return head;
@@ -44,9 +44,10 @@ node *reverseList(node *head)
     }
     return head;
 }
+
 int main()
 {
-
+   
     node *head = new node();
     node *second = new node();
     node *third = new node();
