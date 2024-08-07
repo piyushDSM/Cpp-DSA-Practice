@@ -51,14 +51,15 @@ void append(node **head_ref, int newData)
     return;
 }
 
-void endd(node *head, int newData){
+void endd(node *head, int newData)
+{
 
     node *temp = head;
     node *newNode = new node();
     newNode->data = newData;
-    
 
-    while(temp->next != NULL){
+    while (temp->next != NULL)
+    {
         temp = temp->next;
     }
 
